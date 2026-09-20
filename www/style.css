@@ -1,16 +1,13 @@
 :root {
     --bg: #0b0c0f;
-    --bg-content: #0b0c0f;
     --ink: #ffffffde;
     --ink-soft: #cecece;
     --muted: #9a9a9a;
     --line: #2b2b2b;
     --accent: #4a9eff;
-    --accent-soft: #12233a;
-    --shadow: rgba(0, 0, 0, 0.6);
-    --brand-ink: #000000;
-    --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
     --font-sans: "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --header-h: 62px;
+    --edge: clamp(24px, 8vw, 160px);
 }
 
 *,
@@ -33,350 +30,206 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-@media (prefers-reduced-motion: reduce) {
-    html {
-        scroll-behavior: auto;
-    }
-
-    * {
-        animation-duration: 0.01ms !important;
-        transition-duration: 0.01ms !important;
-    }
+/* ============ Header ============ */
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
 }
 
-a {
-    -webkit-tap-highlight-color: transparent;
-}
-
-:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
-}
-
-/* layout */
-.main-area {
-    min-height: 100vh;
-}
-
-/* center layout */
-.hero {
-    min-height: 100vh;
+.header-inner {
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding: 64px 24px;
+    justify-content: space-between;
+    gap: 28px;
+    padding: 18px var(--edge);
 }
 
-.hero-inner {
-    max-width: 920px;
-    width: 100%;
+.site-brand {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink);
+    text-decoration: none;
+}
+
+.header-nav {
     display: flex;
     align-items: center;
-    gap: 48px;
-    padding: 35px;
-    border: 1px solid var(--line);
-    border-radius: 18px;
-    background: #101115;
+    gap: 28px;
 }
 
-.logo-mark {
-    flex: 0 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    animation: fadeUp 0.6s ease-out 0s forwards;
+.header-link {
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink-soft);
+    text-decoration: underline;
+    text-decoration-color: var(--line);
+    text-underline-offset: 3px;
+    transition: color 0.15s ease, text-decoration-color 0.15s ease;
 }
 
-.logo-mark video {
-    width: 320px;
-    height: 320px;
+.header-link:hover,
+.site-brand:hover {
+    color: #ffffff;
+    text-decoration-color: #ffffff;
+}
+
+/* ============ Generic content page ============ */
+/* Reusable for ANY inner page (policies, projects, etc): use .page > .page-inner,
+   with .page-title for the heading and .content-section / .content-heading for
+   each block. Nothing here is tied to a specific page's content. */
+.page {
+    min-height: calc(100vh - var(--header-h));
+    padding: 56px var(--edge) 64px;
+}
+
+.page-inner {
+    max-width: 620px;
+}
+
+.page-title {
+    margin: 0 0 28px;
+    font-family: var(--font-sans);
+    font-size: 40px;
+    font-weight: 600;
+    color: #ffffff;
+    line-height: 1.15;
+}
+
+/* Optional image or video, placed right below .page-title on any page.
+   Usage: <div class="page-media"><img src="..." alt="..."></div> */
+.page-media {
+    margin: 0 0 40px;
+}
+
+.page-media img,
+.page-media video {
     display: block;
+    width: 100%;
+    max-width: 320px;
+    height: auto;
     border-radius: 14px;
 }
 
-.hero-content {
-    flex: 1 1 auto;
-    min-width: 0;
+.content-section {
+    margin: 0 0 36px;
+}
+
+.content-section:last-child {
+    margin-bottom: 0;
+}
+
+.content-heading {
+    margin: 0 0 12px;
+    font-family: var(--font-sans);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--ink);
+}
+
+.content-section p {
+    margin: 0 0 14px;
+    font-size: 15.5px;
+    line-height: 1.8;
+    color: var(--ink-soft);
+}
+
+.content-section p:last-child {
+    margin-bottom: 0;
+}
+
+.inline-link {
+    color: var(--ink);
+    text-decoration: underline;
+    text-decoration-color: var(--line);
+    text-underline-offset: 3px;
+    transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
+
+.inline-link:hover {
+    color: #ffffff;
+    text-decoration-color: #ffffff;
+}
+
+.content-section ul {
+    margin: 0 0 14px;
+    padding-left: 20px;
+    color: var(--ink-soft);
+    font-size: 15.5px;
+    line-height: 1.8;
+}
+
+/* ============ Footer ============ */
+.site-footer {
+    border-top: 1px solid var(--line);
+    padding: 24px var(--edge) 40px;
+}
+
+.footer-inner {
+    max-width: 460px;
     text-align: left;
 }
 
-.brand {
-    margin: 0 0 20px;
+.copyright {
+    margin: 0 0 14px;
     font-family: var(--font-sans);
-    font-size: 82px;
-    letter-spacing: 0.02em;
-    color: #ffffff;
-    line-height: 1.15;
-    text-align: center;
-    opacity: 0;
-    animation: fadeUp 0.6s ease-out 0s forwards;
-    transition: text-shadow 0.3s ease;
-}
-
-.brand:hover {
-    text-shadow: 0 0 8px rgba(255, 255, 255, 0.400);
-}
-
-/* tech stack */
-.stack-row {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin: 0 0 22px;
-    opacity: 0;
-    animation: fadeUp 0.6s ease-out 0.1s forwards;
-}
-
-.stack-item {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 5px 12px;
-    border: 1px solid var(--line);
-    border-radius: 20px;
-    font-family: var(--font-mono);
     font-size: 12.5px;
-    font-weight: 500;
     color: var(--muted);
-    transition: border-color 0.15s ease, color 0.15s ease;
 }
 
-.stack-item:hover {
-    border-color: #444;
-    color: var(--ink-soft);
-}
-
-.stack-item i {
-    font-size: 14px;
-}
-
-.stack-icon-white {
-    color: #ffffff;
-}
-
-/* tagline */
-.tagline {
-    margin: 0;
-    max-width: 460px;
-    color: var(--ink-soft);
-    font-size: 16px;
-    line-height: 1.85;
-    letter-spacing: 0.01em;
-    font-weight: 400;
-    text-align: center;
-    opacity: 0;
-    animation: fadeUp 0.6s ease-out 0.2s forwards;
-}
-
-.tagline-punch {
-    color: var(--ink);
-    font-weight: 500;
-}
-
-/* socials */
-.socials {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 22px;
-    margin-top: 30px;
-    opacity: 0;
-    animation: fadeUp 0.6s ease-out 0.3s forwards;
-}
-
-.social-link {
-    color: var(--muted);
-    font-size: 22px;
-    line-height: 1;
-    text-decoration: none;
-    transition: color 0.15s ease, transform 0.15s ease;
-}
-
-.social-link:hover {
-    transform: translateY(-2px);
-}
-
-.social-discord:hover {
-    color: #5865f2;
-}
-
-.social-github:hover {
-    color: #ffffff;
-}
-
-.social-reddit:hover {
-    color: #ff4500;
-}
-
-@keyframes fadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(8px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Projects */
-.projects {
-    margin-top: 40px;
-    padding-top: 24px;
-    border-top: 1px solid var(--line);
-    opacity: 0;
-    animation: fadeUp 0.6s ease-out 0.4s forwards;
-}
-
-.projects-label {
-    font-family: var(--font-mono);
-    font-size: 14px;
-    color: var(--muted);
-    margin: 0 0 10px;
-}
-
-.projects-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+.footer-links {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    gap: 6px;
 }
 
-.projects-list li {
-    margin: 4px 0;
-}
-
-.projects-link {
+.footer-links a {
+    font-family: var(--font-sans);
+    font-size: 13px;
     color: var(--ink-soft);
-    text-decoration: none;
-    font-size: 15px;
-    border-bottom: 1px solid var(--ink-soft);
-    transition: color 0.15s ease, border-color 0.15s ease;
+    text-decoration: underline;
+    text-decoration-color: var(--line);
+    text-underline-offset: 3px;
+    transition: color 0.15s ease, text-decoration-color 0.15s ease;
+    width: fit-content;
 }
 
-.projects-link:hover {
+.footer-links a:hover {
     color: #ffffff;
-    border-bottom-color: #ffffff;
+    text-decoration-color: #ffffff;
 }
 
-/* Footer */
-.site-footer {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    display: flex;
-    justify-content: center;
-    padding: 16px 24px;
-    background: linear-gradient(to top, var(--bg) 60%, transparent);
-}
-
-.copyright {
-    font-size: 12.5px;
-    color: var(--muted);
-    white-space: nowrap;
-}
-
-/* Responsive */
-@media (max-width: 900px) {
-    .hero {
-        min-height: 100vh;
-        padding: 72px 24px 56px;
+/* ============ Responsive ============ */
+@media (max-width: 640px) {
+    :root {
+        --edge: 20px;
     }
 
-    .hero-inner {
-        flex-direction: column;
-        text-align: center;
-        gap: 28px;
-        padding: 32px 28px;
+    .page {
+        padding: 40px var(--edge) 48px;
     }
 
-    .hero-content,
-    .brand,
-    .tagline {
-        text-align: center;
+    .page-title {
+        font-size: 30px;
+        margin-bottom: 24px;
     }
 
-    .stack-row,
-    .socials {
-        justify-content: center;
-    }
-
-    .projects-list {
-        align-items: center;
-    }
-
-    .logo-mark video {
-        width: 260px;
-        height: 260px;
-    }
-
-    .brand {
-        font-size: 66px;
+    .page-media img,
+    .page-media video {
+        max-width: 240px;
     }
 }
 
 @media (max-width: 420px) {
-    .logo-mark video {
-        width: 220px;
-        height: 220px;
+    .header-inner {
+        gap: 16px;
     }
 
-    .brand {
-        font-size: 50px;
-    }
-
-    .stack-row {
-        gap: 6px;
-        margin-bottom: 18px;
-    }
-
-    .stack-item {
-        padding: 4px 10px;
-        font-size: 11.5px;
-    }
-
-    .stack-item i {
-        font-size: 13px;
-    }
-
-    .tagline {
-        font-size: 15.5px;
-    }
-
-    .socials {
-        margin-top: 24px;
-        gap: 18px;
-    }
-
-    .social-link {
-        font-size: 20px;
-    }
-
-    .projects {
-        margin-top: 28px;
-        padding-top: 18px;
-    }
-
-    .projects-label {
-        font-size: 14px;
-    }
-
-    .projects-link {
-        font-size: 14px;
-    }
-
-    .site-footer {
-        padding: 12px 20px;
-    }
-
-    .copyright {
-        font-size: 12px;
+    .header-nav {
+        gap: 20px;
     }
 }

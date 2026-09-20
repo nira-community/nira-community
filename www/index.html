@@ -11,71 +11,51 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
     <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
 
-    <main class="main-area">
-        <div class="hero" id="about">
-            <div class="hero-inner">
-                <div class="logo-mark" aria-hidden="true">
-                    <video src="./assets/brand.mp4" autoplay muted playsinline loop></video>
-                </div>
+    <header class="site-header">
+        <div class="header-inner">
+            <a class="site-brand" href="index.html">Nira</a>
+            <nav class="header-nav">
+                <a class="header-link" href="https://nira-community.github.io/awesome-low-level/" target="_blank"
+                    rel="noopener">Projects</a>
+                <a class="header-link" href="policies.html">Policies</a>
+            </nav>
+        </div>
+    </header>
 
-                <div class="hero-content">
-                    <h1 class="brand">Nira</h1>
+    <main class="page">
+        <div class="page-inner">
+            <h1 class="page-title">Nira</h1>
 
-                    <div class="stack-row">
-                        <span class="stack-item"><i class="devicon-c-plain colored"></i> C</span>
-                        <span class="stack-item"><i class="devicon-cplusplus-plain colored"></i> C++</span>
-                        <span class="stack-item"><i class="fa-brands fa-rust stack-icon-white"></i> Rust</span>
-                        <span class="stack-item"><i class="devicon-zig-original colored"></i> Zig</span>
-                        <span class="stack-item"> <i class="fa-solid fa-code stack-icon-white"></i> Odin</span>
-                        <span class="stack-item"><i class="fa-brands fa-linux stack-icon-white"></i> Linux</span>
-                    </div>
-
-                    <p class="tagline">A tamil based community for self-learners passionate about exploring low-level
-                        programming and linux.
-                    </p>
-
-                    <div class="socials">
-                        <a class="social-link social-discord" href="https://discord.gg/YZRknMKn2K" target="_blank"
-                            rel="noopener" aria-label="Join us on Discord">
-                            <i class="fa-brands fa-discord"></i>
-                        </a>
-                        <a class="social-link social-github" href="https://github.com/nira-community" target="_blank"
-                            rel="noopener" aria-label="View us on GitHub">
-                            <i class="fa-brands fa-github"></i>
-                        </a>
-                        <a class="social-link social-reddit" href="https://www.reddit.com/r/NiraCommunity/"
-                            target="_blank" rel="noopener" aria-label="Join us on Reddit">
-                            <i class="fa-brands fa-reddit-alien"></i>
-                        </a>
-                    </div>
-
-                    <div class="projects">
-                        <p class="projects-label">Projects</p>
-                        <ul class="projects-list">
-                            <li>
-                                <a href="https://nira-community.github.io/awesome-low-level/" target="_blank"
-                                    rel="noopener" class="projects-link">Awesome Low Level</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+            <div class="page-media">
+                <video src="./assets/brand.mp4" autoplay muted playsinline loop></video>
             </div>
+
+            <section class="content-section">
+                <p>
+                    A tamil based community for self-learners passionate about exploring low-level
+                    programming and linux.
+                </p>
+            </section>
         </div>
     </main>
 
     <footer class="site-footer">
-        <span class="copyright">&copy; Nira 2026</span>
+        <div class="footer-inner">
+            <p class="copyright">&copy; Nira 2026</p>
+
+            <nav class="footer-links">
+                <a href="https://discord.gg/YZRknMKn2K" target="_blank" rel="noopener">Discord</a>
+                <a href="https://github.com/nira-community" target="_blank" rel="noopener">GitHub</a>
+                <a href="https://www.reddit.com/r/NiraCommunity/" target="_blank" rel="noopener">Reddit</a>
+            </nav>
+        </div>
     </footer>
 
 </body>
